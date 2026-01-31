@@ -108,4 +108,12 @@ fun FormTambahSiswa(
             enabled = enabled,
             singleLine = true
         )
+        OutlinedTextField(
+            value = detailSiswa.alamat,
+            onValueChange = {onValueChange(detailSiswa.copy(alamat=it))},
+            label = { Text(stringResource(R.string.alamat)) },
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
 }
