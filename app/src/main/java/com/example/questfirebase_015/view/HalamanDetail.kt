@@ -32,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import com.example.questfirebase_015.R
 import com.example.questfirebase_015.modeldata.Siswa
 import kotlinx.coroutines.launch
 
