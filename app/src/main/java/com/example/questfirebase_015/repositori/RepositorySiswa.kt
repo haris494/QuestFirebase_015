@@ -9,3 +9,22 @@ interface RepositorySiswa {
     suspend fun editSatuSiswa(id: String, siswa: Siswa)
     suspend fun hapusSatuSiswa(id: String)
 }
+
+class FirebaseRepositorySiswa : RepositorySiswa {
+    private val db = FirebaseFirestore.getInstance()
+    private val collection = db.collection("siswa")
+
+    override suspend fun getDataSiswa(): List<Siswa> {
+        return try {
+            collection.get().await().documents.map { doc ->
+                Siswa(
+                    id = doc.id,
+                    nama = doc.getString("nama") ?: "",
+                    alamat = doc.getString("alamat") ?: "",
+                    telpon = doc.getString("telpon") ?: ""
+                )
+            }
+        } catch (e: Exception) {
+            emptyList()
+        }
+    }
